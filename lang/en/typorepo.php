@@ -17,7 +17,7 @@
 /**
  * Strings for component 'survey', language 'en', branch 'MOODLE_20_STABLE'
  *
- * @package   mod_typo3
+ * @package   mod_typorepo
  * @copyright 2019 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -44,8 +44,8 @@ $string['scrolling'] = 'Scrolling';
 $string['scrollingdesc'] = 'iframe scrolling: yes/no/auto.';
 $string['typopageurl'] = 'Typo3 page base url';
 $string['typopageurldesc'] = 'URL to the Typo3 index page from which every page is displayed. It will be appended by all secured id etc parameters automatically.';
-$string['typo3:addinstance'] = 'Add a new Typo3 instance';
-$string['typo3:view'] = 'View Typo3 instance';
+$string['typorepo:addinstance'] = 'Add a new Typo3 instance';
+$string['typorepo:view'] = 'View Typo3 instance';
 $string['typosecret'] = 'Integration secret';
 $string['typosecretdesc'] = 'Secret phrase for integration encryption token generation.';
 $string['url'] = 'Typo3 repository url';

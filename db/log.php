@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package   mod_typo3
+ * @package   mod_typorepo
  * @copyright 2019 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -23,7 +23,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $logs = [
-    ['module' => 'typo3', 'action' => 'view',   'mtable' => 'typo3', 'field' => 'name'],
-    ['module' => 'typo3', 'action' => 'update', 'mtable' => 'typo3', 'field' => 'name'],
-    ['module' => 'typo3', 'action' => 'add',    'mtable' => 'typo3', 'field' => 'name'],
+    ['module' => 'typorepo', 'action' => 'view',   'mtable' => 'typorepo', 'field' => 'name'],
+    ['module' => 'typorepo', 'action' => 'update', 'mtable' => 'typorepo', 'field' => 'name'],
+    ['module' => 'typorepo', 'action' => 'add',    'mtable' => 'typorepo', 'field' => 'name'],
 ];

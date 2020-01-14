@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Capability definitions for the typo3 module.
+ * Capability definitions for the typorepo module.
  *
- * @package   mod_typo3
+ * @package   mod_typorepo
  * @copyright 2019 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -11,7 +11,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 $capabilities = [
-    'mod/typo3:view' => [
+    'mod/typorepo:view' => [
         'captype' => 'read',
         'contextlevel' => CONTEXT_MODULE,
         'archetypes' => [
@@ -19,7 +19,7 @@ $capabilities = [
             'user' => CAP_ALLOW,
         ]
     ],
-    'mod/typo3:addinstance' => [
+    'mod/typorepo:addinstance' => [
         'riskbitmask' => RISK_XSS,
 
         'captype' => 'write',

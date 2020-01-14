@@ -17,14 +17,14 @@
 /**
  * Version information
  *
- * @package   mod_typo3
+ * @package   mod_typorepo
  * @copyright 2019 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'mod_typo3';
+$plugin->component = 'mod_typorepo';
 $plugin->version = 2020011400;
 $plugin->release = '1.0';
 $plugin->requires = 2019111801;
