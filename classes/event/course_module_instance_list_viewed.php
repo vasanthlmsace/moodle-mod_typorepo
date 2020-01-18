@@ -15,17 +15,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information
- *
  * @package   mod_typorepo
  * @copyright 2020 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace mod_typorepo\event;
+
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'mod_typorepo';
-$plugin->version = 2020011701;
-$plugin->release = '1.0';
-$plugin->requires = 2019111801;
-$plugin->maturity = MATURITY_BETA;
+/**
+ * The mod_typorepo instance list viewed event class.
+ *
+ * @package    mod_typorepo
+ * @copyright  2020 bdecent gmbh <https://bdecent.de>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class course_module_instance_list_viewed extends \core\event\course_module_instance_list_viewed {
+    // No code required here as the parent class handles it all.
+}

@@ -15,13 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'survey', language 'en', branch 'MOODLE_20_STABLE'
+ * Strings for component 'typorepo', language 'en', branch 'MOODLE_20_STABLE'
  *
  * @package   mod_typorepo
- * @copyright 2019 bdecent gmbh <https://bdecent.de>
+ * @copyright 2020 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$string['embedincourse'] = 'Embed in course page';
+$string['embedincourse_help'] = 'If checked the Typo3 page will be embedded directly in the course view page. The activity link will not be visible.';
 $string['displaysettings'] = 'Typo3 repository display settings';
 $string['frameset'] = 'Display typo3 repository in a frameset';
 $string['framesetdesc'] = 'Display typo3 repository in a frameset (same as resource).';
@@ -39,7 +41,7 @@ $string['newwindow'] = 'Display typo3 repository in a new window';
 $string['newwindowdesc'] = 'Display typo3 repository in a new window. Will use height/width from input below.';
 $string['opennewwindow'] = 'If window does not open, please click here';
 $string['pluginadministration'] = 'Typo3 repository administration';
-$string['pluginname'] = 'Typo3 repository';
+$string['pluginname'] = 'Typo3 Repository';
 $string['scrolling'] = 'Scrolling';
 $string['scrollingdesc'] = 'iframe scrolling: yes/no/auto.';
 $string['typopageurl'] = 'Typo3 page base url';

@@ -4,7 +4,7 @@
  * Capability definitions for the typorepo module.
  *
  * @package   mod_typorepo
- * @copyright 2019 bdecent gmbh <https://bdecent.de>
+ * @copyright 2020 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

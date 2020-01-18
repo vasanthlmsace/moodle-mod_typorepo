@@ -16,7 +16,7 @@
 
 /**
  * @package   mod_typorepo
- * @copyright 2019 bdecent gmbh <https://bdecent.de>
+ * @copyright 2020 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -41,7 +41,7 @@ class backup_typorepo_activity_task extends backup_activity_task {
      * Define (add) particular steps this activity can have
      */
     protected function define_my_steps() {
-        // Typorepo only has one structure step
+        // typorepo only has one structure step
         $this->add_step(new backup_typorepo_activity_structure_step('typorepo_structure', 'typorepo.xml'));
     }
 

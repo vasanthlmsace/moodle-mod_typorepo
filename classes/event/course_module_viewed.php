@@ -15,17 +15,36 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information
- *
  * @package   mod_typorepo
  * @copyright 2020 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace mod_typorepo\event;
+
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'mod_typorepo';
-$plugin->version = 2020011701;
-$plugin->release = '1.0';
-$plugin->requires = 2019111801;
-$plugin->maturity = MATURITY_BETA;
+/**
+ * The mod_typorepo course module viewed event class.
+ *
+ * @package   mod_typorepo
+ * @copyright 2020 bdecent gmbh <https://bdecent.de>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class course_module_viewed extends \core\event\course_module_viewed {
+
+    /**
+     * Init method.
+     *
+     * @return void
+     */
+    protected function init() {
+        $this->data['objecttable'] = 'typorepo';
+        $this->data['crud'] = 'r';
+        $this->data['edulevel'] = self::LEVEL_PARTICIPATING;
+    }
+
+    public static function get_objectid_mapping() {
+        return ['db' => 'typorepo', 'restore' => 'typorepo'];
+    }
+}
