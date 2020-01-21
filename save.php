@@ -34,7 +34,7 @@ echo <<<EOT
 <html>
     <head>
         <script language="javascript">
-            var mform1 = document.getElementsByClassName('mform')[0];
+            var mform1 = parent.document.getElementsByClassName('mform')[0];
             if( typeof mform1.url != 'undefined' )           { mform1.url.value = '$url'; }
             if( typeof mform1.name != 'undefined' )          { mform1.name.value = '$name'; }
             if( typeof mform1.config_url != 'undefined' )    { mform1.config_url.value = '$url'; }
