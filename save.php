@@ -26,7 +26,6 @@ require_once('../../config.php');
 require_once('lib.php');
 
 $language	= urldecode($_GET["L"]);
-$name		= urldecode($_GET["pagetitle"]);
 $url		= get_config('typorepo', 'pageurl').urldecode($_GET["pageid"]).'&L='.$language;
 $link_saved = get_string('linksaved', 'typorepo');
 
@@ -36,9 +35,7 @@ echo <<<EOT
         <script language="javascript">
             var mform1 = parent.document.getElementsByClassName('mform')[0];
             if( typeof mform1.url != 'undefined' )           { mform1.url.value = '$url'; }
-            if( typeof mform1.name != 'undefined' )          { mform1.name.value = '$name'; }
             if( typeof mform1.config_url != 'undefined' )    { mform1.config_url.value = '$url'; }
-            if( typeof mform1.config_title != 'undefined' )  { mform1.config_title.value = '$name'; }
         </script>
     </head>
     <body>
