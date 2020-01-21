@@ -27,5 +27,5 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'mod_typorepo';
 $plugin->version = 2020011701;
 $plugin->release = '1.0';
-$plugin->requires = 2019111801;
+$plugin->requires = 2017051509;
 $plugin->maturity = MATURITY_BETA;
