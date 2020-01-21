@@ -59,8 +59,8 @@ class mod_typorepo_mod_form extends moodleform_mod {
         $mform->addElement('text', 'name', get_string('name'), array('size'=>'64'));
         $mform->setType('name', PARAM_TEXT);
 
-        $mform->addElement('checkbox', 'label_mode', get_string('embedincourse', 'typorepo'));
-        $mform->setType('label_mode', PARAM_BOOL);
+        $mform->addElement('advcheckbox', 'label_mode', get_string('embedincourse', 'typorepo'));
+        $mform->setType('label_mode', PARAM_INT);
         $mform->addHelpButton('label_mode', 'embedincourse', 'typorepo');
 
         $woptions = [
