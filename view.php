@@ -72,7 +72,7 @@ $fullurl = $typorepo->url  . '&token=' . $token . '&time=' . $time . '&moodlemod
 
 echo $OUTPUT->header();
 
-echo '<iframe style="margin-left: 0px;" src="' . $fullurl . '" frameborder="0" scrolling="' . get_config('typorepo', 'typorepo_scrolling') . '" width="100%"  height="' . get_config('typorepo', 'typorepo_height') . '"> </iframe>';
+echo '<iframe style="margin-left: 0px;" src="' . $fullurl . '" frameborder="0" scrolling="' . get_config('typorepo', 'scrolling') . '" width="100%"  height="' . get_config('typorepo', 'height') . '"> </iframe>';
 echo $OUTPUT->footer();
 
 echo $OUTPUT->footer();
