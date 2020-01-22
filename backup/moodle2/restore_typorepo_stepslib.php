@@ -15,29 +15,47 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Restore steps.
+ *
  * @package   mod_typorepo
  * @copyright 2020 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+defined('MOODLE_INTERNAL') || die;
 
 /**
  * Define all the restore steps that will be used by the restore_url_activity_task
  */
 
 /**
+ * Restore steps.
+ *
  * Structure step to restore one typorepo activity
  */
 class restore_typorepo_activity_structure_step extends restore_activity_structure_step {
 
+    /**
+     * Define activity structure.
+     *
+     * @return array
+     */
     protected function define_structure() {
 
         $paths = [];
         $paths[] = new restore_path_element('typorepo', '/activity/typorepo');
 
-        // Return the paths wrapped into standard activity structure
+        // Return the paths wrapped into standard activity structure.
         return $this->prepare_activity_structure($paths);
     }
 
+    /**
+     * Process typorepo instance.
+     *
+     * @param array $data
+     * @throws base_step_exception
+     * @throws dml_exception
+     */
     protected function process_typorepo($data) {
         global $DB;
 
@@ -45,9 +63,9 @@ class restore_typorepo_activity_structure_step extends restore_activity_structur
         $oldid = $data->id;
         $data->course = $this->get_courseid();
 
-        // insert the typorepo record
+        // Insert the typorepo record.
         $newitemid = $DB->insert_record('typorepo', $data);
-        // immediately after inserting "activity" record, call this
+        // Immediately after inserting "activity" record, call this.
         $this->apply_activity_instance($newitemid);
     }
 

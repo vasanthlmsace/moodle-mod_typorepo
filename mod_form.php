@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Typorepo module edit form.
+ *
  * @package   mod_typorepo
  * @copyright 2020 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -24,7 +26,7 @@ use mod_typorepo\typo3;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once ($CFG->dirroot.'/course/moodleform_mod.php');
+require_once($CFG->dirroot.'/course/moodleform_mod.php');
 
 /**
  * Module instance edit form.
@@ -37,7 +39,7 @@ class mod_typorepo_mod_form extends moodleform_mod {
      * @throws coding_exception
      * @throws dml_exception
      */
-    function definition() {
+    protected function definition() {
 
         $mform =& $this->_form;
 
@@ -56,7 +58,7 @@ class mod_typorepo_mod_form extends moodleform_mod {
         ]);
         $mform->addElement('html', $iframe);
 
-        $mform->addElement('text', 'name', get_string('name'), array('size'=>'64'));
+        $mform->addElement('text', 'name', get_string('name'), ['size' => '64']);
         $mform->setType('name', PARAM_TEXT);
 
         $mform->addElement('advcheckbox', 'label_mode', get_string('embedincourse', 'typorepo'));

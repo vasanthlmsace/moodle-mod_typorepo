@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * List typorepo instances in a course.
+ *
  * @package   mod_typorepo
  * @copyright 2020 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -96,11 +98,11 @@ foreach ($typorepos as $typorepo) {
     $extra = empty($cm->extra) ? '' : $cm->extra;
     $icon = '';
     if (!empty($cm->icon)) {
-        // each resource file has an icon in 2.0
+        // Each resource file has an icon in 2.0.
         $icon = $OUTPUT->pix_icon($cm->icon, get_string('modulename', $cm->modname));
     }
 
-    $class = $typorepo->visible ? '' : 'class="dimmed"'; // hidden modules are dimmed
+    $class = $typorepo->visible ? '' : 'class="dimmed"'; // Hidden modules are dimmed.
     $table->data[] = [
         $printsection,
         "<a $class $extra href=\"view.php?id=$cm->id\">".$icon.format_string($typorepo->name)."</a>",

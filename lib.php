@@ -15,14 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Common functions for typorepo module.
+ *
  * @package   mod_typorepo
  * @copyright 2020 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-require_once($CFG->libdir . '/filelib.php');
-
 defined('MOODLE_INTERNAL') || die();
+
+require_once($CFG->libdir . '/filelib.php');
 
 /**
  * List of features supported in typorepo module
@@ -31,17 +33,27 @@ defined('MOODLE_INTERNAL') || die();
  */
 function typorepo_supports($feature) {
     switch($feature) {
-        case FEATURE_MOD_ARCHETYPE:           return MOD_ARCHETYPE_RESOURCE;
-        case FEATURE_GROUPS:                  return false;
-        case FEATURE_GROUPINGS:               return false;
-        case FEATURE_MOD_INTRO:               return true;
-        case FEATURE_COMPLETION_TRACKS_VIEWS: return true;
-        case FEATURE_GRADE_HAS_GRADE:         return false;
-        case FEATURE_GRADE_OUTCOMES:          return false;
-        case FEATURE_BACKUP_MOODLE2:          return true;
-        case FEATURE_SHOW_DESCRIPTION:        return true;
+        case FEATURE_MOD_ARCHETYPE:
+            return MOD_ARCHETYPE_RESOURCE;
+        case FEATURE_GROUPS:
+            return false;
+        case FEATURE_GROUPINGS:
+            return false;
+        case FEATURE_MOD_INTRO:
+            return true;
+        case FEATURE_COMPLETION_TRACKS_VIEWS:
+            return true;
+        case FEATURE_GRADE_HAS_GRADE:
+            return false;
+        case FEATURE_GRADE_OUTCOMES:
+            return false;
+        case FEATURE_BACKUP_MOODLE2:
+            return true;
+        case FEATURE_SHOW_DESCRIPTION:
+            return true;
 
-        default: return null;
+        default:
+            return null;
     }
 }
 
@@ -78,6 +90,8 @@ function typorepo_add_instance($instance) {
 }
 
 /**
+ * Update an existing instance of typorepo.
+ *
  * @param \stdClass $instance
  * @return bool
  * @throws dml_exception
@@ -92,7 +106,9 @@ function typorepo_update_instance($instance) {
 }
 
 /**
- * @param $id
+ * Delete an instance of typorepo.
+ *
+ * @param int $id
  * @return bool
  * @throws dml_exception
  */
@@ -160,7 +176,7 @@ function typorepo_cm_info_dynamic(cm_info $cm) {
 
         // Calculate the url.
         $time = time();
-        $token = MD5($USER->username . $USER->firstname . $USER->lastname . $cm->course . $time . $USER->email .
+        $token = md5($USER->username . $USER->firstname . $USER->lastname . $cm->course . $time . $USER->email .
             get_config('typorepo', 'secret'));
         $fullurl = $instance->url  . '&token=' . $token . '&time=' . $time . '&moodlemodid=' . $cm->id . '&login=' .
             base64_encode($USER->username) . '&firstname=' .  base64_encode($USER->firstname) . '&lastname=' .
@@ -211,7 +227,8 @@ function typorepo_get_coursemodule_info($coursemodule) {
         $fullurl = "$CFG->wwwroot/mod/typorepo/view.php?id=$coursemodule->id&amp;redirect=1";
         $width  = get_config('typorepo', 'width');
         $height = get_config('typorepo', 'height');
-        $wh = "width=$width,height=$height,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes";
+        $wh = "width=$width,height=$height,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no," .
+            "scrollbars=yes,resizable=yes";
         $info->onclick = "window.open('$fullurl', '', '$wh'); return false;";
     }
 

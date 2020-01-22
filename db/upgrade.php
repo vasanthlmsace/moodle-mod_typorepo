@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Upgrades to database.
+ *
  * @package   mod_typorepo
  * @copyright 2020 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -22,6 +24,17 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Upgrades to database.
+ *
+ * @param int $oldversion
+ * @return bool
+ * @throws ddl_change_structure_exception
+ * @throws ddl_exception
+ * @throws ddl_table_missing_exception
+ * @throws downgrade_exception
+ * @throws upgrade_exception
+ */
 function xmldb_typorepo_upgrade($oldversion) {
     global $DB;
 
@@ -83,7 +96,6 @@ function xmldb_typorepo_upgrade($oldversion) {
         // Typorepo savepoint reached.
         upgrade_mod_savepoint(true, 2020011701, 'typorepo');
     }
-
 
     return true;
 }

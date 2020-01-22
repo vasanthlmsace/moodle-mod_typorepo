@@ -25,9 +25,11 @@
 require_once('../../config.php');
 require_once('lib.php');
 
-$language	= urldecode($_GET["L"]);
-$url		= get_config('typorepo', 'pageurl').urldecode($_GET["pageid"]).'&L='.$language;
-$link_saved = get_string('linksaved', 'typorepo');
+require_login();
+
+$language  = urldecode($_GET["L"]);
+$url       = get_config('typorepo', 'pageurl').urldecode($_GET["pageid"]).'&L='.$language;
+$linksaved = get_string('linksaved', 'typorepo');
 
 echo <<<EOT
 <html>
@@ -39,7 +41,7 @@ echo <<<EOT
         </script>
     </head>
     <body>
-        <p style="font-family: arial, verdana, serif;">$link_saved</p>
+        <p style="font-family: arial, verdana, serif;">$linksaved</p>
     </body>
 </html>
 EOT;

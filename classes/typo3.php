@@ -15,12 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package   block_typorepo
+ * Helper class for typo3 operations.
+ *
+ * @package   mod_typorepo
  * @copyright 2020 bdecent gmbh <https://bdecent.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace mod_typorepo;
+
+defined('MOODLE_INTERNAL') || die;
 
 /**
  * Helper class for typo3 operations.
@@ -41,7 +45,7 @@ class typo3 {
     public static function build_url($courseid = '', $updateid = '', $baseurl = null) {
         global $USER;
         $time = time();
-        $token = MD5($updateid .
+        $token = md5($updateid .
             $USER->username .
             $USER->firstname .
             $USER->lastname .
