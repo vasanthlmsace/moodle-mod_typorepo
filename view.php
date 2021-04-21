@@ -57,11 +57,11 @@ typorepo_view($typorepo, $course, $cm, $context);
 // Calculate the url.
 $time = time();
 
-$token = md5($USER->username . $USER->firstname . $USER->lastname . $course->id . $time . $USER->email .
+$token = md5($USER->id . $USER->id . $USER->id . $course->id . $time . $USER->id .
     get_config('typorepo', 'secret'));
 $fullurl = $typorepo->url  . '&token=' . $token . '&time=' . $time . '&moodlemodid=' . $cm->id . '&login=' .
-    base64_encode($USER->username) . '&firstname=' .  base64_encode($USER->firstname) . '&lastname=' .
-    base64_encode($USER->lastname) . '&courseid=' .  $course->id . '&email=' .  base64_encode($USER->email);
+    base64_encode($USER->id) . '&firstname=' .  base64_encode($USER->id) . '&lastname=' .
+    base64_encode($USER->id) . '&courseid=' .  $course->id . '&email=' .  base64_encode($USER->id);
 
 if ($redirect) {
     // Coming from course page or url index page.
