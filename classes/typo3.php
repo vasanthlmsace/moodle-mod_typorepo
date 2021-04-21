@@ -46,12 +46,12 @@ class typo3 {
         global $USER;
         $time = time();
         $token = md5($updateid .
-            $USER->username .
-            $USER->firstname .
-            $USER->lastname .
+            $USER->id .
+            $USER->id .
+            $USER->id .
             $courseid .
             $time .
-            $USER->email .
+            $USER->id .
             get_config('typorepo', 'secret'));
 
         if (!$baseurl) {
@@ -62,10 +62,10 @@ class typo3 {
             '&token=' . $token .
             '&time=' . $time .
             '&moodlemodid=' . $updateid .
-            '&login=' . base64_encode($USER->username) .
-            '&firstname=' .  base64_encode($USER->firstname) .
-            '&lastname=' .  base64_encode($USER->lastname) .
+            '&login=' . base64_encode($USER->id) .
+            '&firstname=' .  base64_encode($USER->id) .
+            '&lastname=' .  base64_encode($USER->id) .
             '&courseid=' .  $courseid .
-            '&email=' .  base64_encode($USER->email);
+            '&email=' .  base64_encode($USER->id);
     }
 }
