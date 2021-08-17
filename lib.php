@@ -174,13 +174,13 @@ function typorepo_cm_info_dynamic(cm_info $cm) {
 
     if ($instance->label_mode) {
 
-        // Calculate the url.
+        // Calculate the url. -- anonymised version with no user data used except for the technical ID from moodle.
         $time = time();
-        $token = md5($USER->username . $USER->firstname . $USER->lastname . $cm->course . $time . $USER->email .
+        $token = md5($USER->id . $USER->id . $USER->id . $cm->course . $time . $USER->id .
             get_config('typorepo', 'secret'));
         $fullurl = $instance->url  . '&token=' . $token . '&time=' . $time . '&moodlemodid=' . $cm->id . '&login=' .
-            base64_encode($USER->username) . '&firstname=' .  base64_encode($USER->firstname) . '&lastname=' .
-            base64_encode($USER->lastname) . '&courseid=' .  $cm->course . '&email=' .  base64_encode($USER->email);
+            base64_encode($USER->id) . '&firstname=' .  base64_encode($USER->id) . '&lastname=' .
+            base64_encode($USER->id) . '&courseid=' .  $cm->course . '&email=' .  base64_encode($USER->id);
         $iframe = '<iframe style="margin-left: 0px;" src="' . $fullurl . '" frameborder="0" scrolling="' .
             get_config('typorepo', 'scrolling') . '" width="100%"  height="' .
             get_config('typorepo', 'height') . '"> </iframe>';
