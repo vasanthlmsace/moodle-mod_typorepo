@@ -28,7 +28,7 @@ require_once("../../config.php");
 $id = required_param('id', PARAM_INT); // Course ID.
 
 if (!$course = $DB->get_record('course', ['id' => $id])) {
-    print_error('invalidcourseid');
+    throw new moodle_exception('invalidcourseid');
 }
 
 $strintro = get_string('moduleintro');

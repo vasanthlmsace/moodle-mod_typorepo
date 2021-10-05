@@ -18,7 +18,7 @@
  * typorepo module main user interface
  *
  * @package    mod_typorepo
- * @copyright  Learntube Team www.learntube.de  {@link www.learntube.de}
+ * @copyright  Learntube Team www.learntube.de  {@link https://www.learntube.de}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -34,13 +34,13 @@ $redirect = optional_param('redirect', 0, PARAM_BOOL);
 
 if ($t) {
     if (!$typorepo = $DB->get_record('typorepo', ['id' => $t])) {
-        print_error('invalidaccessparameter');
+        throw new moodle_exception('invalidaccessparameter');
     }
     $cm = get_coursemodule_from_instance('typorepo', $typorepo->id, $typorepo->course, false, MUST_EXIST);
 
 } else {
     if (!$cm = get_coursemodule_from_id('typorepo', $id)) {
-        print_error('invalidcoursemodule');
+        throw new moodle_exception('invalidcoursemodule');
     }
     $typorepo = $DB->get_record('typorepo', ['id' => $cm->instance], '*', MUST_EXIST);
 }

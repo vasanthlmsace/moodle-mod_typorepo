@@ -204,7 +204,7 @@ function typorepo_cm_info_dynamic(cm_info $cm) {
  * "extra" information that may be needed when printing
  * this activity in a course listing.
  *
- * See {@link get_array_of_activities()} in course/lib.php
+ * See get_array_of_activities() in course/lib.php
  *
  * @param stdClass $coursemodule
  * @return cached_cm_info info

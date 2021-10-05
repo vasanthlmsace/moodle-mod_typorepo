@@ -5,9 +5,9 @@
 .modtype_typorepo.label_mode,
 .modtype_typorepo.label_mode .mod-indent-outer,
 .modtype_typorepo.label_mode .contentwithoutlink {
-    display: block !important;
+    display: block;
 }
 
-.path-course-view .modtype_typorepo.label_mode>div {
+.path-course-view .modtype_typorepo.label_mode > div {
     padding: 0 25px 0 0;
 }
