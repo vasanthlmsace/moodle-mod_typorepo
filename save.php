@@ -26,7 +26,7 @@ require_once('../../config.php');
 require_once('lib.php');
 
 require_login();
-$language = required_param("L", PARAM_TEXT);
+$language = optional_param("L", '', PARAM_TEXT);
 $pageid = required_param("pageid", PARAM_INT);
 $language  = urldecode($language);
 $url       = get_config('typorepo', 'pageurl').urldecode($pageid).'&L='.$language;
