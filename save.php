@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information
+ * Generate the selected typo3 page tree url and update to Form hidden url.
  *
  * @package   mod_typorepo
  * @copyright 2020 bdecent gmbh <https://bdecent.de>
@@ -25,9 +25,10 @@
 require_once('../../config.php');
 require_once('lib.php');
 
-require_login();
 $context = context_system::instance();
 $PAGE->set_context($context);
+
+require_login();
 
 $language = optional_param("L", '', PARAM_TEXT);
 $pageid = required_param("pageid", PARAM_INT);
@@ -37,7 +38,6 @@ $linksaved = get_string('linksaved', 'typorepo');
 $templatecontent = [];
 $templatecontent['url'] = $url;
 $templatecontent['linksaved'] = $linksaved;
-echo $OUTPUT->header();
+// Return the html and js content to save the typo3 tree url.
 echo $OUTPUT->render_from_template('mod_typorepo/save', $templatecontent);
-echo $OUTPUT->footer();
 

@@ -24,20 +24,17 @@
 }}
 
 <html>
+    <script>
+        var mform1 = parent.document.getElementById('typorepo-load-iframe').closest('.mform');
+        var url = {{#quote}}{{url}}{{/quote}};
+        if (typeof mform1.url != 'undefined') {
+            mform1.url.value = url;
+        }
+        if (typeof mform1.config_url != 'undefined') {
+            mform1.config_url.value = url;
+        }
+    </script>
     <body>
         <p style="font-family: arial, verdana, serif;">{{linksaved}}</p>
     </body>
 </html>
-
-{{#js}}
-require([], function() {
-    var mform1 = parent.document.getElementsByClassName('mform')[0];
-    var url = {{#quote}}{{url}}{{/quote}};
-    if (typeof mform1.url != 'undefined') {
-        mform1.url.value = url;
-    }
-    if (typeof mform1.config_url != 'undefined') {
-        mform1.config_url.value = url;
-    }
-});
-{{/js}}

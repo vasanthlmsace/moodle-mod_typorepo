@@ -45,7 +45,7 @@ class mod_typorepo_mod_form extends moodleform_mod {
 
         $mform->addElement('hidden', 'url');
         $mform->setType('url', PARAM_URL);
-
+        
         $typo3url = typo3::build_url(optional_param('course', '', PARAM_INT), optional_param('update', '', PARAM_INT));
 
         $iframe = \html_writer::tag('iframe', '', [
@@ -54,7 +54,8 @@ class mod_typorepo_mod_form extends moodleform_mod {
             'scrolling' => get_config('typorepo', 'scrolling'),
             'width' => get_config('typorepo', 'width'),
             'height' => get_config('typorepo', 'height'),
-            'class' => 'typo-embed'
+            'class' => 'typo-embed',
+            'id' => 'typorepo-load-iframe'
         ]);
         $mform->addElement('html', $iframe);
 
