@@ -26,23 +26,18 @@ require_once('../../config.php');
 require_once('lib.php');
 
 require_login();
+$context = context_system::instance();
+$PAGE->set_context($context);
+
 $language = optional_param("L", '', PARAM_TEXT);
 $pageid = required_param("pageid", PARAM_INT);
 $language  = urldecode($language);
 $url       = get_config('typorepo', 'pageurl').urldecode($pageid).'&L='.$language;
 $linksaved = get_string('linksaved', 'typorepo');
+$templatecontent = [];
+$templatecontent['url'] = $url;
+$templatecontent['linksaved'] = $linksaved;
+echo $OUTPUT->header();
+echo $OUTPUT->render_from_template('mod_typorepo/save', $templatecontent);
+echo $OUTPUT->footer();
 
-echo <<<EOT
-<html>
-    <head>
-        <script language="javascript">
-            var mform1 = parent.document.getElementsByClassName('mform')[0];
-            if( typeof mform1.url != 'undefined' )           { mform1.url.value = '$url'; }
-            if( typeof mform1.config_url != 'undefined' )    { mform1.config_url.value = '$url'; }
-        </script>
-    </head>
-    <body>
-        <p style="font-family: arial, verdana, serif;">$linksaved</p>
-    </body>
-</html>
-EOT;

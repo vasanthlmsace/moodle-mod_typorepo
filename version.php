@@ -28,4 +28,4 @@ $plugin->component = 'mod_typorepo';
 $plugin->version = 2021101800;
 $plugin->release = '1.1';
 $plugin->requires = 2020061501;
-$plugin->maturity = MATURITY_BETA;
+$plugin->maturity = MATURITY_STABLE;
