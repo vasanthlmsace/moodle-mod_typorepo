@@ -45,6 +45,8 @@ if ($t) {
     $typorepo = $DB->get_record('typorepo', ['id' => $cm->instance], '*', MUST_EXIST);
 }
 
+// Check typo repourl.
+$typorepourl = !empty($typorepo->url) ? $typorepo->url : get_config('typorepo', url);
 $course = $DB->get_record('course', ['id' => $cm->course], '*', MUST_EXIST);
 
 require_course_login($course, true, $cm);
@@ -59,7 +61,7 @@ $time = time();
 
 $token = md5($USER->id . $USER->id . $USER->id . $course->id . $time . $USER->id .
     get_config('typorepo', 'secret'));
-$fullurl = $typorepo->url  . '&token=' . $token . '&time=' . $time . '&moodlemodid=' . $cm->id . '&login=' .
+$fullurl = $typorepourl  . '&token=' . $token . '&time=' . $time . '&moodlemodid=' . $cm->id . '&login=' .
     base64_encode($USER->id) . '&firstname=' .  base64_encode($USER->id) . '&lastname=' .
     base64_encode($USER->id) . '&courseid=' .  $course->id . '&email=' .  base64_encode($USER->id);
 

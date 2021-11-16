@@ -40,50 +40,60 @@ class mod_typorepo_mod_form extends moodleform_mod {
      * @throws dml_exception
      */
     protected function definition() {
-
+        global $PAGE;
         $mform =& $this->_form;
+        $typorepourl = get_config('typorepo', 'url');
+        $typorepopageurl = get_config('typorepo', 'pageurl');
+        if ($typorepopageurl && $typorepourl) {
+            $mform->addElement('hidden', 'url');
+            $mform->setType('url', PARAM_URL);
+            $typo3url = typo3::build_url(optional_param('course', '', PARAM_INT), optional_param('update', '', PARAM_INT));
 
-        $mform->addElement('hidden', 'url');
-        $mform->setType('url', PARAM_URL);
-        $typo3url = typo3::build_url(optional_param('course', '', PARAM_INT), optional_param('update', '', PARAM_INT));
-        $iframe = \html_writer::tag('iframe', '', [
-            'src' => $typo3url,
-            'frameborder' => 0,
-            'scrolling' => get_config('typorepo', 'scrolling'),
-            'width' => get_config('typorepo', 'width'),
-            'height' => get_config('typorepo', 'height'),
-            'class' => 'typo-embed',
-            'id' => 'typorepo-load-iframe'
-        ]);
-        $mform->addElement('html', $iframe);
+            $iframe = \html_writer::tag('iframe', '', [
+                'src' => $typo3url,
+                'frameborder' => 0,
+                'scrolling' => get_config('typorepo', 'scrolling'),
+                'width' => get_config('typorepo', 'width'),
+                'height' => get_config('typorepo', 'height'),
+                'class' => 'typo-embed',
+                'id' => 'typorepo-load-iframe'
+            ]);
+            $mform->addElement('html', $iframe);
 
-        $mform->addElement('text', 'name', get_string('name'), ['size' => '64']);
-        $mform->setType('name', PARAM_TEXT);
+            $mform->addElement('text', 'name', get_string('name'), ['size' => '64']);
+            $mform->setType('name', PARAM_TEXT);
 
-        $mform->addElement('advcheckbox', 'label_mode', get_string('embedincourse', 'typorepo'));
-        $mform->setType('label_mode', PARAM_INT);
-        $mform->addHelpButton('label_mode', 'embedincourse', 'typorepo');
+            $mform->addElement('advcheckbox', 'label_mode', get_string('embedincourse', 'typorepo'));
+            $mform->setType('label_mode', PARAM_INT);
+            $mform->addHelpButton('label_mode', 'embedincourse', 'typorepo');
 
-        $woptions = [
-            'newwindow' => get_string('newwindow', 'typorepo'),
-            'iframe' => get_string('iframe', 'typorepo')
-        ];
-        $mform->addElement('select', 'options', get_string('displaysettings', 'typorepo'), $woptions);
-        $mform->disabledIf('options', 'label_mode', 'checked');
+            $woptions = [
+                'newwindow' => get_string('newwindow', 'typorepo'),
+                'iframe' => get_string('iframe', 'typorepo')
+            ];
+            $mform->addElement('select', 'options', get_string('displaysettings', 'typorepo'), $woptions);
+            $mform->disabledIf('options', 'label_mode', 'checked');
 
-        $this->standard_intro_elements();
+            $this->standard_intro_elements();
 
-        $features = [
-            'groups' => false,
-            'groupings' => false,
-            'groupmembersonly' => false,
-            'outcomes' => false,
-            'gradecat' => false,
-            'idnumber' => true
-        ];
-        $this->standard_coursemodule_elements($features);
+            $features = [
+                'groups' => false,
+                'groupings' => false,
+                'groupmembersonly' => false,
+                'outcomes' => false,
+                'gradecat' => false,
+                'idnumber' => true
+            ];
+            $this->standard_coursemodule_elements($features);
 
-        $this->add_action_buttons();
+            $this->add_action_buttons();
+        } else {
+            $infourl = new moodle_url('/admin/settings.php', array('section' => 'modsettingtyporepo'));
+            $infolink = html_writer::link($infourl, get_string('setuphere', 'mod_typorepo'));
+            $message = get_string('errorurlredirect', 'mod_typorepo', $infolink);
+            $redirecturl = new moodle_url("/course/view.php", array('id' => $PAGE->course->id));
+            redirect($redirecturl, $message);
+        }
     }
 }
 
